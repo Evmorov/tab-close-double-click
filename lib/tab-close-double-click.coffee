@@ -1,4 +1,4 @@
-$ = require('jquery');
+$ = require('jquery')
 
 module.exports =
   activate: ->
