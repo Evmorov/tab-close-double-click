@@ -1,4 +1,4 @@
-# tab-close-double-click package
+## Tab Close Double Click package
 
 Close any tab by double clicking the tab.
 
