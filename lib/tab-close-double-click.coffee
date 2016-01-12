@@ -1,16 +1,23 @@
 $ = require 'jquery'
 
+CloseMethods = Object.freeze(
+  DOUBLE_CLICK: 'double-click'
+  SHIFT_CLICK: 'shift + single-click'
+  CTRL_CLICK: 'ctrl + single-click'
+  ALT_CLICK: 'alt + single-click'
+)
+
 module.exports =
   config:
     closeMethod:
       title: 'Close method'
       type: 'string'
-      default: 'double-click'
+      default: CloseMethods.DOUBLE_CLICK
       enum: [
-        'double-click'
-        'shift + single-click'
-        'ctrl + single-click'
-        'alt + single-click'
+        CloseMethods.DOUBLE_CLICK
+        CloseMethods.SHIFT_CLICK
+        CloseMethods.CTRL_CLICK
+        CloseMethods.ALT_CLICK
       ]
 
   activate: ->
@@ -31,10 +38,10 @@ module.exports =
 
   actionForCloseMethod: (closeMethod) ->
     switch closeMethod
-      when 'double-click' then ['dblclick', null]
-      when 'shift + single-click' then ['click', 'shift']
-      when 'ctrl + single-click' then ['click', 'ctrl']
-      when 'alt + single-click' then ['click', 'alt']
+      when CloseMethods.DOUBLE_CLICK then ['dblclick', null]
+      when CloseMethods.SHIFT_CLICK then ['click', 'shift']
+      when CloseMethods.CTRL_CLICK then ['click', 'ctrl']
+      when CloseMethods.ALT_CLICK then ['click', 'alt']
 
   createCloseFunction: (modifierKey) ->
     (keyPressed) ->
@@ -45,3 +52,6 @@ module.exports =
       itemToDestroy = atom.workspace.getPaneItems()[tabIndex]
       clickedPane = atom.workspace.paneForItem(itemToDestroy)
       clickedPane.destroyItem(itemToDestroy)
+
+  deactivate: ->
+    @turnOffLastCloseMethod()
