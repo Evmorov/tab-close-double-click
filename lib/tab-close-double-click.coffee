@@ -51,7 +51,7 @@ module.exports =
       tabIndex = $('.tab').index($(this))
       itemToDestroy = atom.workspace.getPaneItems()[tabIndex]
       clickedPane = atom.workspace.paneForItem(itemToDestroy)
-      clickedPane.destroyItem(itemToDestroy)
+      clickedPane?.destroyItem(itemToDestroy)
 
   deactivate: ->
     @turnOffLastCloseMethod()
