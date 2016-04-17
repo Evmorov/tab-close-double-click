@@ -86,6 +86,13 @@ describe 'Tab Close', ->
       firstTab.trigger(altClick)
       expectTabsCount(0)
 
+  describe 'when the configuration changes', ->
+    it 'changes the close action', ->
+      atom.config.set('tab-close.closeMethod', 'double-click')
+      atom.config.set('tab-close.closeMethod', 'alt + single-click')
+      firstTab.trigger(altClick)
+      expectTabsCount(0)
+
   describe '::deactivate', ->
     it 'removes a listener from tabs', ->
       atom.packages.deactivatePackage('tab-close')
