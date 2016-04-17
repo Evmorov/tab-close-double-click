@@ -1,5 +1,5 @@
 {
-  "name": "tab-close-double-click",
+  "name": "tab-close",
   "main": "./lib/tab-close",
   "version": "2.0.2",
   "description": "Close a tab with different actions",
