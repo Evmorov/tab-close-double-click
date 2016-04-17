@@ -21,7 +21,7 @@ module.exports =
       ]
 
   activate: ->
-    atom.config.observe 'tab-close-double-click.closeMethod', (closeMethod) =>
+    atom.config.observe 'tab-close.closeMethod', (closeMethod) =>
       @setCloseMethod closeMethod
 
   setCloseMethod: (closeMethod) ->

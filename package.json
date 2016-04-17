@@ -1,9 +1,9 @@
 {
-  "name": "tab-close-double-click",
-  "main": "./lib/tab-close-double-click",
+  "name": "tab-close",
+  "main": "./lib/tab-close",
   "version": "2.0.2",
-  "description": "Close a tab with one of the action: double-click, ctrl-click, shift-click or alt-click",
-  "repository": "https://github.com/Evmorov/tab-close-double-click",
+  "description": "Close a tab with different actions",
+  "repository": "https://github.com/Evmorov/tab-close",
   "license": "MIT",
   "engines": {
     "atom": ">=1.0.0 <2.0.0"
