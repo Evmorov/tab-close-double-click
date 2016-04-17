@@ -15,7 +15,7 @@ describe 'Tab Close', ->
       atom.workspace.open 'sample.txt'
 
     runs ->
-      firstTab = $('.tab-bar .tab:first')
+      firstTab = $('.pane .tab:first')
 
       shiftClick = $.Event("click")
       shiftClick.shiftKey = true
@@ -25,7 +25,7 @@ describe 'Tab Close', ->
       altClick.altKey = true
 
   expectTabsCount = (length) ->
-    expect($('.tab-bar .tab')).toHaveLength(length)
+    expect($('.pane .tab')).toHaveLength(length)
 
   describe 'when action is set to double-click', ->
     beforeEach ->
@@ -44,7 +44,16 @@ describe 'Tab Close', ->
         expectTabsCount(1)
         expect($('.tab-bar .tab:first').text()).toEqual('sample2.txt')
 
-    it 'does not close a with other actions', ->
+    it 'closes a tab on the second pane', ->
+      waitsForPromise ->
+        atom.workspace.open 'sample2.txt', split: 'right'
+      runs ->
+        expectTabsCount(2)
+        firstTab.dblclick()
+        expectTabsCount(1)
+        expect($('.tab-bar .tab:first').text()).toEqual('sample2.txt')
+
+    it 'does not close a tab with other actions', ->
       firstTab.trigger(shiftClick)
       expectTabsCount(1)
       firstTab.trigger(ctrlClick)
