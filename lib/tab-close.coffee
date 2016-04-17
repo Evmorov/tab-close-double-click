@@ -25,10 +25,10 @@ module.exports =
       @setCloseMethod closeMethod
 
   setCloseMethod: (closeMethod) ->
-    @turnOffLastCloseMethod()
+    @turnOffPreviousCloseMethod()
     @turnOnCloseMethod(closeMethod)
 
-  turnOffLastCloseMethod: ->
+  turnOffPreviousCloseMethod: ->
     $('.panes').off @mouseAction, '.tab', @closeFunction
 
   turnOnCloseMethod: (closeMethod) ->
@@ -54,4 +54,4 @@ module.exports =
       clickedPane?.destroyItem(itemToDestroy)
 
   deactivate: ->
-    @turnOffLastCloseMethod()
+    @turnOffPreviousCloseMethod()
