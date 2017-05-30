@@ -48,8 +48,7 @@ module.exports =
       return if modifierKey is 'shift' and not keyPressed.shiftKey
       return if modifierKey is 'ctrl' and not keyPressed.ctrlKey
       return if modifierKey is 'alt' and not keyPressed.altKey
-      tabIndex = $('.tab').index($(this))
-      itemToDestroy = atom.workspace.getPaneItems()[tabIndex]
+      itemToDestroy = atom.workspace.getCenter().getActivePaneItem()
       clickedPane = atom.workspace.paneForItem(itemToDestroy)
       clickedPane?.destroyItem(itemToDestroy)
 
