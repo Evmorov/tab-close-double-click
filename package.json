@@ -1,7 +1,7 @@
 {
   "name": "tab-close",
   "main": "./lib/tab-close",
-  "version": "2.0.3",
+  "version": "2.1.0",
   "description": "Close a tab with different actions",
   "repository": "https://github.com/Evmorov/tab-close",
   "license": "MIT",
